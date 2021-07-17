@@ -6,6 +6,7 @@ use App\Models\Area;
 use App\Models\Empleado;
 use App\Models\Rol;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class EmpleadoController extends Controller
 {
@@ -14,13 +15,19 @@ class EmpleadoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
+        $texto=trim($request->get('texto'));
+        // $empleados = DB::table('empleados')
+        //     ->select('nombre', 'email', 'sexo', 'boletin', 'descripcion', 'area_id')
+        //     ->where('nombre','LIKE','%'.$texto.'%')
+        //     ->paginate(5);
+
         $areas = Area::all();
         $roles = Rol::all();
-        $empleados = Empleado::with('area')->paginate(5);
+        $empleados = Empleado::with('area')->where('nombre','LIKE','%'.$texto.'%')->paginate(5);
         //dd($empleados);
-        return view('empleados', ['empleados' => $empleados, 'areas' => $areas, 'roles' => $roles]);
+        return view('empleados', ['empleados' => $empleados, 'texto' => $texto, 'areas' => $areas, 'roles' => $roles]);
     }
 
     /**

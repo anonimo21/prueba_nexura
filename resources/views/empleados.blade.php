@@ -23,13 +23,13 @@
             <div class="col-md-12">
                 <div class="row">
                     <div class="col-md-8">
-                        <form action="">
+                        <form action="{{route('empleados.index')}}" method="GET">
                             <div class="row">
                                 <div class="col-md-4">
-                                    <input type="text" class="form-control" name="texto" placeholder="Buscar...">
+                                    <input type="text" class="form-control" name="texto" placeholder="Buscar..." value="{{$texto}}">
                                 </div>
                                 <div class="col-auto">
-                                    <input type="submit" class="btn btn-outline-success" value="Buscar">
+                                    <input type="submit" class="btn btn-outline-success" value="Buscar por nombres">
                                 </div>
                             </div>
                         </form>
@@ -230,42 +230,6 @@
     <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script src='https://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.js'></script>
-    <script>
-        $(function() {
-            $("#btnSave").on('click', function() {
-                $("#formCrear").validate({
-                    rules: {
-                        nombre: {
-                            required: true,
-                        },
-                        email: {
-                            required: true, 
-                            email:true
-                        },
-                        sexo: {
-                            required: true,
-                        },
-                        descripcion: {
-                            required: true,
-                        }
-                    },
-                    messages: {
-                        nombre: {
-                            required: "Campo nombre requerido *"
-                        },
-                        email: {
-                            required: "Campo email requerido *"
-                        },
-                        sexo: {
-                            required: "Campo sexo requerido *"
-                        },
-                        descripcion: {
-                            required: "Campo descripción requerido *"
-                        },
-                    }
-                });
-            });
-        });
-    </script>
+    <script src='{{asset('js/validations.js')}}'></script>
 </body>
 </html>
