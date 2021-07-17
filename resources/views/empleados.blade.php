@@ -75,7 +75,12 @@
                             <tr>
                                 <td>{{$empleado->nombre}}</td>
                                 <td>{{$empleado->email}}</td>
-                                <td>{{$empleado->sexo}}</td>
+                                @if($empleado->sexo == 'M')
+                                    <td>Masculino</td>
+                                @endif
+                                @if($empleado->sexo == 'F')
+                                    <td>Femenino</td>
+                                @endif
                                 <td>{{$empleado->area->nombre}}</td>
                                 <td>{{($empleado->boletin == 1) ? 'Si' : 'No'}}</td>
                                 <td>
