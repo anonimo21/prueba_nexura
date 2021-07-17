@@ -1,3 +1,7 @@
+#Aplicacion desarrollada con el framework Laravel version 8
+#Aplicacion desarrollada con el lenguaje php 7.4
+#Aplicacion desarrollada con el SGBD MySql
+
 #Requerimientos y herramientas:
 
 1- Git 
